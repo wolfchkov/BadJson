@@ -29,17 +29,17 @@ public class JsonObject extends HashMap<String, Object> implements Map<String, O
 
         StringBuilder sb = new StringBuilder();
 
-        prittyPrint(sb, this, 0);
+        prettyPrint(sb, this, 0);
         return sb.toString();
     }
 
     /**
      * Рекурсивно проходися по карте и пишем красивый JSON
-     * @param sb буффер, куда аппедним JSON
+     * @param sb буффер, куда аппеним JSON
      * @param jo JsonObject который разбираем 
      * @param depth глубина рекурсии
      */
-    private void prittyPrint(StringBuilder sb, JsonObject jo, int depth) {
+    private void prettyPrint(StringBuilder sb, JsonObject jo, int depth) {
         String spaces = createSpaces(depth);
                 
         sb.append("{");
@@ -54,7 +54,7 @@ public class JsonObject extends HashMap<String, Object> implements Map<String, O
             if (value instanceof String) {
                 sb.append("\"").append(value).append("\"");
             } else if (value instanceof JsonObject) {
-                prittyPrint(sb, (JsonObject)value, depth + 1);
+                prettyPrint(sb, (JsonObject)value, depth + 1);
             } else {
                 sb.append(entry.getValue());
             }
